@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit name="userdept">
+        <entities>
+          <entity value="com.userdept.userdept.entities.Department" />
+          <entity value="com.userdept.userdept.entities.User" />
+        </entities>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+</project>
