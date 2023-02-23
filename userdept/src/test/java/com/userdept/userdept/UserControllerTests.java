@@ -32,11 +32,24 @@ public class UserControllerTests {
         Department newDept = new Department(Long.valueOf(1), "dept");
         User newUser = new User();
         newUser.setName("Bianca");
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/users")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(newUser)))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+
         newUser.setDepartment(newDept);
+
         mockMvc.perform(MockMvcRequestBuilders.post("/users")
                         .contentType("application/json")
                         .content(objectMapper.writeValueAsString(newUser)))
                 .andExpect(MockMvcResultMatchers.status().isCreated());
-
+    }
+    @Test
+    void deleteUser() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/users/{id}", 11L)
+                        .contentType("application/json"))
+            .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
